@@ -14,7 +14,7 @@ get_token <- function(username, password) {
   credentials <- list(username = username, password = password)
 
   auth_token_response <- httr::POST("https://api.acaps.org/api/v1/token-auth/", body = credentials)
-  if (httr::http_type(response) != "application/json") {
+  if (httr::http_type(auth_token_response) != "application/json") {
     stop("API did not return json", call. = FALSE)
   }
   auth_token <- parse_response(auth_token_response)$token

@@ -6,13 +6,15 @@
 #' to a single string.
 #'
 #' @param endpoint_url The API endpoint for the data you want to retrieve.
-#' @param token Your authentication token. This token can be retrieved with the `get_token()` function.
-#' @param ... Additional parameters to be passed along with the API request.
+#' @param token Your authentication token. If left empty, the environment variable
+#' created with `set_env_token()` will be used.
+#' @param ... Additional parameters to be passed along with the API request. Parameters
+#' must be provided as name-value pairs.
 #'
 #' @return returns the requested data as an R dataframe.
 #' @export
 #'
-get_dataset <- function(endpoint_url, token, ...) {
+get_dataset <- function(endpoint_url, token = .token(), ...) {
   response <- access_endpoint(endpoint_url, token, ...)
 
   results <- parse_response(response)
