@@ -1,6 +1,6 @@
 Package: acaps
 Title: An R Wrapper for the ACAPS API
-Version: 0.0.0.9000
+Version: 0.0.1.0000
 Authors@R: 
     person("Renze", "Terpstra", , "renze@rendata.nl", role = c("aut", "cre"))
 Description: This package provides functions to easily access the ACAPS API.
