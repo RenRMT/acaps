@@ -4,12 +4,13 @@
 \alias{access_endpoint}
 \title{Access an ACAPS API endpoint}
 \usage{
-access_endpoint(endpoint_url, token, ...)
+access_endpoint(endpoint_url, token = .token(), ...)
 }
 \arguments{
 \item{endpoint_url}{The API endpoint to be accessed.}
 
-\item{token}{Your authentication yoken}
+\item{token}{Your authentication token. If left empty, the environment variable
+created with \code{set_env_token()} will be used.}
 
 \item{...}{Additional parameters to be passed along with the API request.}
 }

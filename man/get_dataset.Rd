@@ -4,14 +4,16 @@
 \alias{get_dataset}
 \title{Get an ACAPS dataset}
 \usage{
-get_dataset(endpoint_url, token, ...)
+get_dataset(endpoint_url, token = .token(), ...)
 }
 \arguments{
 \item{endpoint_url}{The API endpoint for the data you want to retrieve.}
 
-\item{token}{Your authentication token. This token can be retrieved with the \code{get_token()} function.}
+\item{token}{Your authentication token. If left empty, the environment variable
+created with \code{set_env_token()} will be used.}
 
-\item{...}{Additional parameters to be passed along with the API request.}
+\item{...}{Additional parameters to be passed along with the API request. Parameters
+must be provided as name-value pairs.}
 }
 \value{
 returns the requested data as an R dataframe.
