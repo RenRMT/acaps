@@ -22,4 +22,3 @@ base_url <- "https://api.acaps.org/api/v1/"
   }
   token
 }
-

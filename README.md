@@ -26,11 +26,10 @@ devtools::install_github("RenRMT/acaps")
 
 You need to have registered an account with ACAPS in order to use the
 API. A username and password are required to generate an authorization
-token. Once you’ve retrieved your authorization token you can store it
-as an R environment variable. If you store the token as an environment
-variable you will no longer need to manually provide the token with each
-call to the API. More importantly, this will ensure that no secrets are
-stored in your scripts.
+token. You can retrieve your token using the `get_token()` function.
+Once you’ve retrieved your authorization token you can store it as an R
+environment variable using `set_env_token()`. Alternatively, you can
+provide the token manually with each API call.
 
 ``` r
 library(acaps)
@@ -42,11 +41,11 @@ set_env_token(auth_token)
 
 ## Using the wrapper functions
 
-The pacakge currently has easy wrapper functions for the following API
-endpoint groups: crises, countries, humanitarian-access,
-inform-severity-index. You can access any of the endpoints belonging to
-each of the groups. Each function has the possibility to provide
-additional parameters in order to filter the dataset, e.g. by country.
+The package has easy to use wrapper functions for all existing ACAPS
+endpoints except for the Türkiye & Syria earthquake group of endpoints.
+You can access any of the endpoints belonging to each of the groups.
+Each function has the possibility to provide additional parameters in
+order to filter the dataset, e.g. by country.
 
 ``` r
 get_dataset_access("Jan2023", iso3 = "AFG")
@@ -59,13 +58,14 @@ used with any of the endpoints not covered by the above specialized
 functions.
 
 ``` r
-url <- "https://api.acaps.org/api/v1/risk-list/"
+url <- "https://api.acaps.org/api/v1/turkiye-syria-earthquake/humanitarian-access-events/"
 
 get_dataset(url)
 ```
 
-Finally two lower level functions are available in case your workflow
-contains additonal steps.
+Finally two lower level functions are available to be used in different
+workflows. These functions can be used to separately retrieve data from the provided 
+endpoint or parse the API response as a dataframe.
 
 ``` r
 url <- "https://api.acaps.org/api/v1/countries/"
@@ -76,5 +76,4 @@ result <- parse_response(api_response)
 
 ## Dependencies
 
-This package relies on the `httr` and `jsonlite` packages as well as
-their upstream dependencies.
+This package requires the `httr` and `jsonlite` packages.

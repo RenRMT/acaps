@@ -2,20 +2,30 @@
 % Please edit documentation in R/get_token.R
 \name{get_token}
 \alias{get_token}
-\title{Get an API token for your account}
+\alias{set_env_token}
+\title{Retrieving and storing an API token for your account.}
 \usage{
 get_token(username, password)
+
+set_env_token(token, silent_overwrite = FALSE)
 }
 \arguments{
 \item{username}{Your ACAPS account username (usually an e-mail address).}
 
 \item{password}{Your ACAPS account password.}
+
+\item{token}{Your ACAPS authentication token}
+
+\item{silent_overwrite}{If set to TRUE, function will always overwrite existing value. If FALSE,
+will prompt the user if they want to overwrite the existing value.}
 }
 \value{
 This returns your API authentication token as character string.
 }
 \description{
-This function is used to retrieve an API authentication token for your account
-from the ACAPS API. A valid authentication token (and by extension an account)
-is required in order to use the ACAPS API.
+Retrieve an API authentication token for your account from the ACAPS API.
+A valid authentication token (and by extension an account) is required in order to use the ACAPS API.
+Storing the token as an environment variable allows the package functions to access your authentication token
+without putting the token value itself in scripts. All functions that require a
+token will look for this environment variable by default if no token value is provided manually.
 }
